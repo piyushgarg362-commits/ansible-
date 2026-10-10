@@ -38,7 +38,7 @@ pipeline {
                     ansible-playbook \
                         -i inventory \
                         deploy.yml \
-                        --syntax-check
+                        /home/ansible/.local/bin/ansible-playbook -i inventory deploy.yml --syntax-check
                 '''
             }
         }
