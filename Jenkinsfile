@@ -35,10 +35,9 @@ pipeline {
 stage('Ansible Syntax Check') {
     steps {
         sh '''
-            echo "Checking Ansible installation..."
+            whoami
+            ls -l /home/ansible/.local/bin/ansible-playbook
             /home/ansible/.local/bin/ansible-playbook --version
-
-            echo "Running syntax check..."
             /home/ansible/.local/bin/ansible-playbook -i inventory deploy.yml --syntax-check
         '''
     }
