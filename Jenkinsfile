@@ -32,16 +32,17 @@ pipeline {
             }
         }
 
-        stage('Ansible Syntax Check') {
-            steps {
-                sh '''
-                    ansible-playbook \
-                        -i inventory \
-                        deploy.yml \
-                        --syntax-check
-                '''
-            }
-        }
+stage('Ansible Syntax Check') {
+    steps {
+        sh '''
+            echo "Checking Ansible installation..."
+            /home/ansible/.local/bin/ansible-playbook --version
+
+            echo "Running syntax check..."
+            /home/ansible/.local/bin/ansible-playbook -i inventory deploy.yml --syntax-check
+        '''
+    }
+}
 
         stage('Deploy to EC2') {
             steps {
