@@ -35,10 +35,7 @@ pipeline {
         stage('Ansible Syntax Check') {
             steps {
                 sh '''
-                    ansible-playbook \
-                        -i inventory \
-                        deploy.yml \
-                        /home/ansible/.local/bin/ansible-playbook -i inventory deploy.yml --syntax-check
+                     /home/ansible/.local/bin/ansible-playbook -i inventory deploy.yml --syntax-check
                 '''
             }
         }
